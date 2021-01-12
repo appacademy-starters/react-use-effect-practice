@@ -12,7 +12,7 @@ The project also includes user controls (in _src/App.js_) connected using
 hook).
 
 The goal of this project is to practice different use cases for `useEffect` in 
-*React* to improve understanding and confidence.
+*React* to improve your understanding and build confidence in your skills.
 
 * Debugging prop changes
 * Debugging state changes

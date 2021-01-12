@@ -22,11 +22,15 @@ h3 {
     margin: 12px 0 0 24px;
 }
 .image-area {
+    width: 0;
+    height: 0;
     border: solid black 5px;
     margin: 8px 20px;
     position: relative;
 }
 .message {
+    width: 0;
+    height: 0;
     text-align: center;
     margin: 0 20px;
 }
@@ -61,20 +65,20 @@ h3 {
     position: absolute;
     width: 100%;
     height: 100%;
-    filter: invert(1) sepia(1) saturate(0);
+    filter: none;
 }
 .red {
-    filter: invert(1) sepia(1) saturate(12) hue-rotate(-30deg);
+    filter: invert(1) sepia(1) saturate(100) hue-rotate(0deg);
 }
 .orange {
-    filter: invert(1) sepia(1) saturate(12) hue-rotate(0deg);
+    filter: invert(1) sepia(1) saturate(10) hue-rotate(0deg);
 }
 .brown {
-    filter: invert(1) sepia(1) saturate(2) hue-rotate(-10deg);
+    filter: invert(1) sepia(1) saturate(100) hue-rotate(60deg);
 }
 .light-brown {
-    filter: invert(1) sepia(1) saturate(3) hue-rotate(-40deg);
+    filter: invert(1) sepia(1) saturate(3) hue-rotate(0deg);
 }
 .yellow {
-    filter: none;
+    filter: invert(0) sepia(1) saturate(7) hue-rotate(0deg);
 }

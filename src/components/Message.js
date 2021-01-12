@@ -9,3 +9,4 @@ function Message({ size }) {
 };
 
 export default Message;
+

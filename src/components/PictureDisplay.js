@@ -10,45 +10,39 @@ import feather8 from "../images/feather8.svg";
 import feather9 from "../images/feather9.svg";
 import featherA from "../images/featherA.svg";
 
+const feathers = [
+    feather1,
+    feather2,
+    feather3,
+    feather4,
+    feather5,
+    feather6,
+    feather7,
+    feather8,
+    feather9,
+    featherA,
+];
+
 function PictureDisplay ({ size, featherCount, featherColors }) {
     console.log('PictureDisplay', size, featherCount, featherColors);
 
-    return (
-        <div className="image-area medium">
-            {featherCount >= 1 &&
-                <img src={feather1} className="image-feather" alt="" />
-            }
-            {featherCount >= 2 &&
-                <img src={feather2} className="image-feather" alt="" />
-            }
-            {featherCount >= 3 &&
-                <img src={feather3} className="image-feather" alt="" />
-            }
-            {featherCount >= 4 &&
-                <img src={feather4} className="image-feather" alt="" />
-            }
-            {featherCount >= 5 &&
-                <img src={feather5} className="image-feather" alt="" />
-            }
-            {featherCount >= 6 &&
-                <img src={feather6} className="image-feather" alt="" />
-            }
-            {featherCount >= 7 &&
-                <img src={feather7} className="image-feather" alt="" />
-            }
-            {featherCount >= 8 &&
-                <img src={feather8} className="image-feather" alt="" />
-            }
-            {featherCount >= 9 &&
-                <img src={feather9} className="image-feather" alt="" />
-            }
-            {featherCount >= 10 &&
-                <img src={featherA} className="image-feather" alt=""/>
-            }
 
-            <img src={turkey} className="image-turkey" alt="turkey" />
-        </div>
-    );
+  // TODO: Wrap in useEffect
+  const colors = [];
+  if (!featherColors || featherColors.length === 0) featherColors = [''];
+  for (let i=0; i<featherCount; i++) {
+    colors.push(featherColors[i % featherColors.length]);
+  }
+
+  return (
+    <div className={`image-area ${sizeClass}`}>
+      {colors.map((c, i) =>
+        <img src={feathers[i]} className={`image-feather ${c}`} alt="" />
+      )}
+
+      <img src={turkey} className="image-turkey" alt="turkey" />
+    </div>
+  );
 }
 
 export default PictureDisplay;

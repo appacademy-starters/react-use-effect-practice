@@ -1,7 +1,7 @@
 # React `useEffect` Practice Project
 
-This starter includes a simple project with controls to configure the display of
-a turkey drawing for kids.
+This starter includes the foundation a simple project with controls to configure
+display of a turkey drawing for kids.
 
 It includes function components for image (_src/components/PictureDisplay_) and
 message (_src/components/Message_), including appropriate props (`size` string, 
@@ -24,10 +24,14 @@ The goal of this project is to practice different use cases for `useEffect` in
 Look through the existing JavaScript and CSS files to familiarize yourself with
 the project.
 
-Run `npm install` and `npm start` to see what is available. Go ahead and click 
-on the controls to see what `console.log` messages have been included. Also, 
-look for warnings or errors appearing in the *JavaScript Console* (part of the 
-*Developer Tools* in your browser).
+Run `npm install` and `npm start` to see what is available. At this time, it is 
+okay to receive warnings about variables that are "assigned a value but never 
+used". Through the steps outlined in this project, you will correct these 
+problems. 
+
+Go ahead and click on the controls to see what `console.log` messages have been 
+included. Also, look for warnings or errors appearing in the *JavaScript 
+Console* (found in the *Developer Tools* you can open in your browser).
 
 As you probably noticed, there are two function components in this project:
 

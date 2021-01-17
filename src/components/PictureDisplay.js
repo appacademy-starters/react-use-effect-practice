@@ -24,8 +24,7 @@ const feathers = [
 ];
 
 function PictureDisplay ({ size, featherCount, featherColors }) {
-    console.log('PictureDisplay', size, featherCount, featherColors);
-
+  console.log('PictureDisplay', size, featherCount, featherColors);
 
   // TODO: Wrap in useEffect
   const colors = [];
@@ -35,7 +34,7 @@ function PictureDisplay ({ size, featherCount, featherColors }) {
   }
 
   return (
-    <div className={`image-area ${sizeClass}`}>
+    <div className={`image-area medium`}>
       {colors.map((c, i) =>
         <img src={feathers[i]} className={`image-feather ${c}`} alt="" />
       )}

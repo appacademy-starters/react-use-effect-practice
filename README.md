@@ -296,6 +296,8 @@ appropriate widths for 4 different sizes (`small`, `medium`, `large`, `xlarge`).
 That means it should be possible to write some code to calculate those values
 from the "s", "m", "l" and "xl" values used by the `size` prop.
 
+### Calculating Image Size
+
 * Open _src/components/PictureDisplay.js_
 * In the `useEffect` the depends on the `size` prop, add several lines of code
 to calculate the class name to use for each size.
@@ -348,6 +350,13 @@ function PictureDisplay ({ size, featherCount, featherColors }) {
     // The rest is omitted because it hasn't changed (yet)
 ```
 
+* Finally, replace your call to the `console.log` at the end of the new 
+`useEffect`'s function with a call to the setter for the new state variable.
+
+```
+        // console.log(cname);
+        setSizeClass(cname);
+```
 * Modify the `className` for the `<div>` to replace `medium` with your new
 state variable. Here is one way to accomplish this.
 
@@ -359,15 +368,75 @@ state variable. Here is one way to accomplish this.
 clicking the size buttons (as long as it's a different size - remember "Small"
 is the default).
 
-Finally, you can repeat the calculation inside `useEffect` and the state change
-in the `Message` component (that is _src/components/Message.js_).
+In case you get stuck, here's what the class function should look like in 
+_src/components/PictureDisplay.js_.
+
+```javascript
+function PictureDisplay ({ size, featherCount, featherColors }) {
+  const [sizeClass, setSizeClass] = useState('');
+
+  // useEffect(() => {
+  //   console.log('PictureDisplay', size, featherCount, featherColors);
+  // }, [size, featherCount, featherColors]);
+
+  useEffect(() => {
+    console.log('PictureDisplay size', size);
+    let cname = '';
+    switch (size) {
+      case 'm':
+        cname = 'medium';
+        break;
+      case 'l':
+        cname = 'large';
+        break;
+      case 'xl':
+        cname = 'xlarge';
+        break;
+      default:
+        cname = 'small';
+        break;
+    }
+    setSizeClass(cname);
+  }, [size]);
+
+  useEffect(() => {
+    console.log('PictureDisplay feather count', featherCount);
+  }, [featherCount]);
+
+  useEffect(() => {
+    console.log('PictureDisplay feather colors', featherColors);
+  }, [featherColors]);
+
+  // TODO: Wrap in useEffect
+  const colors = [];
+  if (!featherColors || featherColors.length === 0) featherColors = [''];
+  for (let i=0; i<featherCount; i++) {
+    colors.push(featherColors[i % featherColors.length]);
+  }
+
+  return (
+    <div className={`image-area ${sizeClass}`}>
+      {colors.map((c, i) =>
+        <img src={feathers[i]} className={`image-feather ${c}`} alt="" />
+      )}
+
+      <img src={turkey} className="image-turkey" alt="turkey" />
+    </div>
+  );
+}
+```
+
+### Calculating Message Area Size
+
+Now, you can repeat the calculation inside `useEffect` and the state change
+in the `Message` component (that is, _src/components/Message.js_).
 
 > Hint: Copy and paste will speed up this work!
 
 (The only difference is the `<div>` tag which uses `message` as its base css
 class name instead of `image-area`.)
 
-## Phase 4: Message...
+## Phase 4: User-friendly messaging
 
 Finally, you can complete the minimum functionality for this application by 
 setting the message below the picture based on the number of feathers selected.
@@ -377,7 +446,6 @@ The current message only works well when there are no feathers (meaning the
 
 * Open _App.js_.
 * Pass the `size` prop into the `Message` component.
-
 
 ### Solution (if you need it)
 
@@ -416,7 +484,21 @@ Modify in _src/components/Message.js_.
     );
 ```
 
-## Bonus Phase A: Refactoring
+## Bonus Phase A: Additional practice with `useEffect`
+
+Write code for another `useEffect` to address the "TODO" comment in 
+_src/components/PictureDisplay.js_.
+
+```javascript
+// TODO: Wrap in useEffect
+```
+
+> Hint: The guts of the effect handler function are already done. You need only
+> employ the `useEffect` before, and set an appropriate `deps` array after (or
+> copy/paste the code into the appropriate debugging `useEffect` you coded 
+> earlier).
+
+## Bonus Phase B: Refactoring
 
 Sometimes, you might change your mind on the best implementation while you're 
 working. It is a best practice to get SOMETHING working first, then *refactor* 
@@ -441,7 +523,7 @@ calculation to _App.js_.
 * If possible, remove any imports that are no longer in use. (There might not be
 any, but it's good practice to check anyways!)
 
-## Bonus Phase B: Additional practice in `React`
+## Bonus Phase C: Additional practice with `React` props, state, layouts, etc.
 
 There are a number of other enhancements you can make to this application to get
 additional practice the with various aspects you've learned in *React*. Below, 
@@ -453,4 +535,4 @@ to discover.
 * *Moderate*: Prevent the count text entry < 0 or > 10 (Hint: Refactor the input 
 to a controlled form element by assigning its `value`).
 * *Challenging*: Improve the layout for settings elements. What to do is up to 
-you (Hint: It will probably involve a mix of JSX and CSS).
+you! (Hint: It will probably involve a mix of JSX and CSS.)

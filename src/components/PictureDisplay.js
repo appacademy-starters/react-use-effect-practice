@@ -48,7 +48,7 @@ useEffect(() => {
           cname = 'small';
           break;
   }
-  console.log(cname);
+  setSizeClass(cname)
 }, [size]);
 
 useEffect(() => {

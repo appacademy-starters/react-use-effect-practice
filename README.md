@@ -445,7 +445,7 @@ The current message only works well when there are no feathers (meaning the
 `count` is zero).
 
 * Open _App.js_.
-* Pass the `size` prop into the `Message` component.
+* Pass the `message` prop into the `Message` component.
 
 ### Solution (if you need it)
 

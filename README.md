@@ -445,7 +445,7 @@ The current message only works well when there are no feathers (meaning the
 `count` is zero).
 
 * Open _App.js_.
-* Pass the `size` prop into the `Message` component.
+* Pass the `featherCount` prop into the `Message` component.
 
 ### Solution (if you need it)
 
@@ -483,6 +483,9 @@ Modify in _src/components/Message.js_.
         </div>
     );
 ```
+
+> Hint: You'll want to create a `sizeClass` state variable in the `Message`
+> and do something similar to the logic in your `PictureDisplay` component.
 
 ## Bonus Phase A: Additional practice with `useEffect`
 
